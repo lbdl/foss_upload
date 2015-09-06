@@ -1,0 +1,20 @@
+wp php version
+--------------
+php version: 5.4.42
+https://github.com/Homebrew/homebrew-php //php homebrew versions so that we can use php54
+
+lamp stack on osx
+-----------------
+gist.github.com/pwenzel/f06419631bd172331281
+
+Brew Install
+------------
+enable PHP in Apache add the following to httpd.conf and restart Apache:
+    LoadModule php5_module    /usr/local/opt/php54/libexec/apache2/libphp5.so
+
+The php.ini file can be found in:
+    /usr/local/etc/php/5.4/php.ini
+
+OSX AMP Stack
+-------------
+http://coolestguidesontheplanet.com/get-apache-mysql-php-phpmyadmin-working-osx-10-10-yosemite/
