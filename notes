@@ -18,3 +18,45 @@ The php.ini file can be found in:
 OSX AMP Stack
 -------------
 http://coolestguidesontheplanet.com/get-apache-mysql-php-phpmyadmin-working-osx-10-10-yosemite/
+
+mysql Start
+-----------
+sudo /usr/local/mysql/support-files/mysql.server start
+
+Path To Binary
+--------------
+/usr/local/mysql/bin/mysql
+
+Root Password
+-------------
+
+/usr/local/mysql/bin/mysqladmin -u root password 'axifluviMYSQL23*!'
+
+PhpMyAdmin
+----------
+need to create symlink for the mysql socket where osx looks for it rather than in /tmp where mysql creates it
+
+sudo mkdir /var/mysql
+sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
+
+PhPMyAdmin Site
+---------------
+http://localhost/~timS/phpmyadmin/
+
+xcdebug notes
+-------------
+To finish installing xdebug for PHP 5.4:
+  * /usr/local/etc/php/5.4/conf.d/ext-xdebug.ini was created,
+    do not forget to remove it upon extension removal.
+  * Validate installation via one of the following methods:
+  *
+  * Using PHP from a webserver:
+  * - Restart your webserver.
+  * - Write a PHP page that calls "phpinfo();"
+  * - Load it in a browser and look for the info on the xdebug module.
+  * - If you see it, you have been successful!
+  *
+  * Using PHP from the command line:
+  * - Run "php -i" (command-line "phpinfo()")
+  * - Look for the info on the xdebug module.
+  * - If you see it, you have been successful!

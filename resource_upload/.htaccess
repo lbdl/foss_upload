@@ -2,3 +2,5 @@ AuthType Basic
 AuthName "Password uploads"
 AuthUserFile /var/sites/f/friendsofstockwellskatepark.com/public_html/resource_upload/.htpasswd
 Require valid-user
+#DirectoryIndex fullpath.php
+DirectoryIndex upload.php
