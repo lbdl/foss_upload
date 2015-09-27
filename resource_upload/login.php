@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 $error = '';
 
 function setupPDO() {
@@ -45,7 +45,8 @@ if (isset($_POST['submit'])) {
         $query = loginUser($connection, $username, $hashedPwd);
         if ($query->rowCount()==1) {
             $_SESSION['login_user'] = $username; // Initializing Session
-            header("location: profile.php"); // Redirecting To Other Page
+//            header("location: upload.php"); // Redirecting To Other Page
+            header("location: profile.php");
         } else {
             $error = "Username or Password is invalid";
         }

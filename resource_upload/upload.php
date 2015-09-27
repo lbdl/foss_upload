@@ -1,6 +1,21 @@
 <?php
 $id = $_GET['id'];
 ?>
+    <!DOCTYPE html>
+    <html>
+<head>
+    <title>Your Home Page</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="profile">
+    <b id="welcome">Welcome : <i><?php echo $login_session; ?></i></b>
+    <b id="logout"><a href="logout.php">Log Out</a></b>
+</div>
+</body>
+    </html>
+
+
 
     <form enctype="multipart/form-data" id="upload_form"
           action="target.php" method="POST">

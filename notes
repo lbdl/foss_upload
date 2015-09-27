@@ -19,9 +19,18 @@ OSX AMP Stack
 -------------
 http://coolestguidesontheplanet.com/get-apache-mysql-php-phpmyadmin-working-osx-10-10-yosemite/
 
-mysql Start
------------
+mysql Start Stop Restart
+------------------------
 sudo /usr/local/mysql/support-files/mysql.server start
+
+mysql config
+------------
+/usr/local/mysql/my.conf
+
+enable query logging
+--------------------
+ 29 general_log=on
+ 30 general_log_file=/var/log/mysql/query.log
 
 Path To Binary
 --------------
@@ -29,13 +38,11 @@ Path To Binary
 
 Root Password
 -------------
-
 /usr/local/mysql/bin/mysqladmin -u root password 'axifluviMYSQL23*!'
 
 PhpMyAdmin
 ----------
 need to create symlink for the mysql socket where osx looks for it rather than in /tmp where mysql creates it
-
 sudo mkdir /var/mysql
 sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock
 
