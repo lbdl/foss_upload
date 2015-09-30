@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
         $query = loginUser($connection, $username, $hashedPwd);
         if ($query->rowCount()==1) {
             $_SESSION['login_user'] = $username; // Initializing Session
-            header("location: upload.php"); // Redirecting To Other Page
+            header("location: progress.php"); // Redirecting To Other Page
         } else {
             $error = "Username or Password is invalid";
         }

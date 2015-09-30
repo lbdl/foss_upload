@@ -1,8 +1,8 @@
 <?php
 include('login.php'); // Includes Login Script
-if(isset($_SESSION['login_user'])){
-    header("location: upload.php");
-}
+//if(isset($_SESSION['login_user'])){
+//    header("location: progress.php");
+//}
 ?>
 <!DOCTYPE html>
 <html>

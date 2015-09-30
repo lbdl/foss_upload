@@ -3,7 +3,8 @@
 $targetDir = "uploaded_content/";
 
 function fileIdentifier($fName) {
-    $tmpStr = uniqid($fName);
+    $tmp = uniqid() . "_" . $fName;
+    return $tmp;
 }
 
 function recordUploads($fileID) {
@@ -11,9 +12,9 @@ function recordUploads($fileID) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $tmpName = basename($_FILES["test_file"]["name"]);
-    $targetFileName = $targetDir . $tmpName;
-    if (move_uploaded_file($_FILES["test_file"][fileIdentifier($tmpName)],
+    $tmpName = basename($_FILES["uploaded_file"]["name"]);
+    $targetFileName = $targetDir . fileIdentifier($tmpName);
+    if (move_uploaded_file($_FILES["uploaded_file"]["tmp_name"],
         $targetFileName)) {
     } else {
         echo "Sorry failed to store $tmpName to $targetFileName";
