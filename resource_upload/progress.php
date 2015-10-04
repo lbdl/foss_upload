@@ -10,15 +10,8 @@ $id = uniqid("");
 <script type="text/javascript">
 
     function monitorUploadProgress() {
-
-    }
-
-
-    (function () {
         var httpRequest;
-        document.getElementById("ajaxButton").onclick = function () {
-            makeRequest("getProgress.php?progress_key=<?php echo($id)?>");
-        };
+        makeRequest("getProgress.php?progress_key=<?php echo($id)?>");
 
         function makeRequest(url) {
             if (window.XMLHttpRequest) { // Mozilla, Safari, ...
@@ -40,63 +33,35 @@ $id = uniqid("");
                 alert('Giving up :( Cannot create an XMLHTTP instance');
                 return false;
             }
-            httpRequest.onreadystatechange = alertContents;
+
+            httpRequest.onreadystatechange = setBar;
             httpRequest.open('GET', url, true);
             httpRequest.send();
         }
 
-        function alertContents() {
-            if (httpRequest.readyState === 4) {
-                if (httpRequest.status === 200) {
-                    alert(httpRequest.responseText);
-                } else {
-                    alert('There was a problem with the request.');
-                }
+        function setBar(percent, responseCode) {
+            document.getElementById("progressinner").style.width = percent + "%";
+            if (percent < 100) {
+                setTimeout("monitorUploadProgress()", 100);
             }
         }
-    })();
-
-
-    //    function getProgress() {
-    //        GDownloadUrl("getProgress.php?progress_key=<?php //echo($id)?>//",
-    //            function (percent, responseCode) {
-    //                document.getElementById("progressinner").style.width = percent + "%";
-    //                if (percent < 100) {
-    //                    setTimeout("getProgress()", 100);
-    //                }
-    //            });
-    //    }
+    }
 
     var counter = 0;
 
     function startProgress() {
         document.getElementById("progressouter").style.display = "block";
         setTimeout("monitorUploadProgress()", 1000);
-        fire();
-    }
-
-    function fire() {
-        if (counter < 101) {
-            document.getElementById("progressinner").style.width =
-                counter + "%";
-            counter++;
-            setTimeout("fire()", 100);
-        }
     }
 
 </script>
 
 <iframe id="login" name="theframe" src="upload.php?id=<?php echo($id) ?>">
 </iframe>
-
-
 <div id="progressouter" style="width: 500px; height: 20px; border: 6px solid red; display:none;">
     <div id="progressinner" style=
-    "position: relative; height: 20px; background-color: purple; width: 0%; ">
+    "position: relative; height: 20px; background-color: #DCE6F7; width: 0%; ">
     </div>
 </div>
-
-<!--<span onclick="startProgress()">Start me up!</span>-->
-
 </body>
 </html>

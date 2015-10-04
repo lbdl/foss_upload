@@ -5,7 +5,6 @@ $id = $_GET['id'];
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Your Home Page</title>
     <link href="../css/form.css" rel="stylesheet" type="text/css">
 </head>
 <body>
